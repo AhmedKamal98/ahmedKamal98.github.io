@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ahmed Kamal — Backend Engineering &amp; Technical Mentoring</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F8F6;
+    --ink:#131A17;
+    --muted:#5C6A63;
+    --pine:#1B5E4B;
+    --rule:#DDE1DC;
+    --panel:#FFFFFF;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  :root:not([data-theme="light"]){
+    @media (prefers-color-scheme: dark){
+      --paper:#0E1412;
+      --ink:#E8EDE9;
+      --muted:#93A29A;
+      --pine:#63B9A0;
+      --rule:#243029;
+      --panel:#141C19;
+    }
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0E1412;
+      --ink:#E8EDE9;
+      --muted:#93A29A;
+      --pine:#63B9A0;
+      --rule:#243029;
+      --panel:#141C19;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0E1412;
+    --ink:#E8EDE9;
+    --muted:#93A29A;
+    --pine:#63B9A0;
+    --rule:#243029;
+    --panel:#141C19;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--pine);text-decoration:none;border-bottom:1px solid transparent}
+  a:hover{border-bottom-color:var(--pine)}
+  a:focus-visible{outline:2px solid var(--pine);outline-offset:3px;border-radius:2px}
+
+  .shell{max-width:1140px;margin:0 auto;padding:0 28px}
+  .grid{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:72px;padding:72px 0 96px}
+
+  /* identity column */
+  .side{align-self:start}
+  @media (min-width:900px){ .side{position:sticky;top:56px} }
+  .name{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-weight:600;
+    font-size:clamp(28px,3.4vw,36px);
+    line-height:1.15;
+    letter-spacing:-0.02em;
+    margin:0 0 14px;
+  }
+  .role{color:var(--muted);margin:0 0 28px;font-size:15.5px;max-width:34ch}
+  .contact{list-style:none;margin:0;padding:0;font-size:14.5px}
+  .contact li{padding:9px 0;border-top:1px solid var(--rule)}
+  .contact li:last-child{border-bottom:1px solid var(--rule)}
+  .contact span{color:var(--muted);display:block;font-size:13px;margin-bottom:1px}
+  .basis{
+    margin-top:26px;font-size:13.5px;color:var(--muted);
+    max-width:36ch;line-height:1.55;
+  }
+
+  /* content column */
+  section{padding-bottom:56px}
+  h2{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:15px;font-weight:600;letter-spacing:0.01em;
+    margin:0 0 22px;padding-bottom:10px;border-bottom:2px solid var(--ink);
+  }
+  .lede{font-size:19px;line-height:1.55;max-width:60ch;margin:0 0 8px}
+
+  .services{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .service{background:var(--panel);border:1px solid var(--rule);border-radius:3px;padding:20px}
+  .service h3{font-size:16px;margin:0 0 7px;font-weight:600}
+  .service p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.55}
+
+  .work{border-top:1px solid var(--rule);padding:22px 0}
+  .work:first-of-type{border-top:none;padding-top:0}
+  .work h3{font-size:17px;margin:0 0 4px;font-weight:600}
+  .stack{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12.5px;color:var(--pine);margin:0 0 9px}
+  .work p{margin:0 0 9px;max-width:66ch;color:var(--muted);font-size:15px}
+  .metrics{list-style:none;display:flex;flex-wrap:wrap;gap:8px 10px;margin:0;padding:0}
+  .metrics li{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:12.5px;color:var(--ink);
+    border:1px solid var(--rule);border-radius:2px;padding:3px 9px;background:var(--panel);
+  }
+
+  .rows{list-style:none;margin:0;padding:0}
+  .rows li{
+    display:flex;justify-content:space-between;gap:20px;
+    padding:13px 0;border-top:1px solid var(--rule);font-size:15px;
+  }
+  .rows li:first-child{border-top:none}
+  .rows .when{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    color:var(--muted);font-size:13.5px;white-space:nowrap;
+  }
+  .rows strong{font-weight:600;display:block}
+  .rows em{font-style:normal;color:var(--muted);font-size:14px}
+
+  .hire{background:var(--panel);border:1px solid var(--rule);border-left:3px solid var(--pine);border-radius:3px;padding:24px}
+  .hire p{margin:0 0 12px;max-width:58ch;font-size:15.5px;color:var(--muted)}
+  .hire p:last-child{margin-bottom:0}
+  .hire a{font-weight:500}
+
+  footer{border-top:1px solid var(--rule);padding:24px 0 40px;color:var(--muted);font-size:13.5px}
+
+  @media (max-width:899px){
+    .grid{grid-template-columns:1fr;gap:48px;padding:48px 0 64px}
+    .shell{padding:0 22px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="grid">
+
+    <aside class="side">
+      <h1 class="name">Ahmed Kamal<br>Abd El-Hameed</h1>
+      <p class="role">Backend engineer and technical mentor working with teams on Node.js and TypeScript systems.</p>
+      <ul class="contact">
+        <li><span>Email</span><a href="mailto:ahkamal252@gmail.com">ahkamal252@gmail.com</a></li>
+        <li><span>Phone</span><a href="tel:+201063867252">+20 106 386 7252</a></li>
+        <li><span>GitHub</span><a href="https://github.com/AhmedKamal98" rel="noopener">github.com/AhmedKamal98</a></li>
+        <li><span>LinkedIn</span><a href="https://linkedin.com/in/ahmedkamal131" rel="noopener">linkedin.com/in/ahmedkamal131</a></li>
+        <li><span>Based in</span>Cairo, Egypt — working remotely with clients abroad</li>
+      </ul>
+      <p class="basis">Available for project work, retained reviews, and ongoing mentoring engagements. Registered as an independent business in Egypt.</p>
+    </aside>
+
+    <main>
+      <section>
+        <h2>Services</h2>
+        <p class="lede">I build and review backend systems, and I train the developers who maintain them. Engagements run from a one-off architecture review to a long-term retainer.</p>
+        <div class="services" style="margin-top:22px">
+          <div class="service">
+            <h3>Backend architecture and APIs</h3>
+            <p>Node.js, NestJS and TypeScript services: REST and GraphQL APIs, multi-tenant systems, PostgreSQL and MongoDB data models, caching and performance work.</p>
+          </div>
+          <div class="service">
+            <h3>Code review and technical audit</h3>
+            <p>Structured review of an existing codebase against clean architecture, security and maintainability criteria, delivered as a written report with prioritised fixes.</p>
+          </div>
+          <div class="service">
+            <h3>Developer mentoring and training</h3>
+            <p>One-to-one mentoring and team workshops on microservices, testing, design patterns and scaling. Over 50 developers mentored to date.</p>
+          </div>
+          <div class="service">
+            <h3>SaaS product development</h3>
+            <p>End-to-end delivery of subscription products: billing with Stripe, role-based access control, reporting pipelines, CI/CD and deployment.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Selected work</h2>
+
+        <article class="work">
+          <h3>COCA — penetration testing platform</h3>
+          <p class="stack">Node.js / TypeScript / MongoDB / React</p>
+          <p>Enterprise cybersecurity platform for running penetration tests, tracking vulnerabilities and generating client reports automatically, with five levels of role-based access and CVSS v3.1 risk scoring.</p>
+          <ul class="metrics">
+            <li>50+ clients</li><li>1,000+ findings tracked</li><li>200+ reports generated</li>
+          </ul>
+        </article>
+
+        <article class="work">
+          <h3>COSO Forge — project management platform</h3>
+          <p class="stack">NestJS / PostgreSQL / React / Next.js</p>
+          <p>Production SaaS for project management with real-time collaboration over WebSockets, built on clean architecture with a Redis caching layer that cut database queries by 60 percent.</p>
+          <ul class="metrics">
+            <li>200+ projects</li><li>1,000+ tasks</li><li>99.9% uptime</li>
+          </ul>
+        </article>
+
+        <article class="work">
+          <h3>Ostazy — education platform</h3>
+          <p class="stack">NestJS / MongoDB / React / Stripe</p>
+          <p>Platform for private tutors covering students, lessons, payments and analytics, with Stripe subscriptions, webhook automation and monthly invoicing generated from aggregation pipelines.</p>
+          <ul class="metrics">
+            <li>30+ tutors</li><li>200+ students</li><li>500+ invoices monthly</li>
+          </ul>
+        </article>
+
+        <article class="work">
+          <h3>LogBook — activity tracking system</h3>
+          <p class="stack">NestJS / Prisma / PostgreSQL / Redis</p>
+          <p>Internal system for employee activity tracking and multi-level reporting, with hierarchical permissions from department down to individual employee and caching tuned for time-series data.</p>
+          <ul class="metrics">
+            <li>100+ employees</li><li>10,000+ entries monthly</li><li>70% time saved</li>
+          </ul>
+        </article>
+      </section>
+
+      <section>
+        <h2>Engagements</h2>
+        <ul class="rows">
+          <li>
+            <div><strong>Udacity</strong><em>Independent contractor — mentoring and code review</em></div>
+            <div class="when">2022 — present</div>
+          </li>
+          <li>
+            <div><strong>Corelia (Ricoh)</strong><em>Backend engineering on enterprise applications</em></div>
+            <div class="when">2023 — present</div>
+          </li>
+          <li>
+            <div><strong>Nile University</strong><em>Database systems and software design</em></div>
+            <div class="when">2024 — 2025</div>
+          </li>
+          <li>
+            <div><strong>Ahram Canadian University</strong><em>Web development, databases, software engineering</em></div>
+            <div class="when">2020 — 2023</div>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Training and credentials</h2>
+        <ul class="rows">
+          <li><div><strong>Agentic AI Workflows for Financial Services</strong><em>Udacity</em></div><div class="when">2025</div></li>
+          <li><div><strong>Amazon Q Apps Development</strong><em>Udacity</em></div><div class="when">2025</div></li>
+          <li><div><strong>Web Development Nanodegree</strong><em>Udacity</em></div><div class="when">2021</div></li>
+          <li><div><strong>Back-end Development Specialization</strong><em>Sprints</em></div><div class="when">2021</div></li>
+          <li><div><strong>MSc Software Engineering</strong><em>Cairo University — in progress</em></div><div class="when">2022 —</div></li>
+          <li><div><strong>BSc Computer Science</strong><em>Ahram Canadian University</em></div><div class="when">2020</div></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Start a project</h2>
+        <div class="hire">
+          <p>Tell me what the system does today and what you need it to do next. I will come back with a scope, a timeline and a fixed quote before any work begins.</p>
+          <p>Write to <a href="mailto:ahkamal252@gmail.com">ahkamal252@gmail.com</a> or call <a href="tel:+201063867252">+20 106 386 7252</a>. I work in English and Arabic.</p>
+        </div>
+      </section>
+
+      <footer>Ahmed Kamal Abd El-Hameed — independent software engineering services, Cairo, Egypt.</footer>
+    </main>
+
+  </div>
+</div>
+</body>
+</html>
